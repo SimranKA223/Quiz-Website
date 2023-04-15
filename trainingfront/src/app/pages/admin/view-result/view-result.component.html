@@ -1,0 +1,87 @@
+<h1 style="color: white;" class="ml20">Result Details</h1>
+
+<div class="ml20" style="display: flex; justify-content: space-between;">
+    <input type="text"
+    placeholder="Search by user"
+    style="width: 450px; padding: 2px 20px; margin: 10px 0px; height: 60px; border: 5px solid grey;border-radius: 50px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"
+    [(ngModel)]="filterText"
+    >
+
+    <button (click)="exportCSV()" mat-raised-button class="mr20" style="background-color: rgb(98, 234, 25);">Export</button>
+</div>
+
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+        <div class="row mt20">
+            <div id="myDiv" class="col-md-4" *ngFor="let r of filteredResult | paginate:{itemsPerPage:6, currentPage:p};">
+
+                <mat-card class=" mt20 transparent" style="flex-basis: 50%;">
+            
+            
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>{{r.user.firstName}} {{r.user.lastName}}
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            {{r.user.username}}
+                        </mat-card-subtitle>
+                
+                
+                    </mat-card-header>
+
+                    <div class="text-center">
+                        <b>Grade: 
+                            <i>
+                            <span style="color: rgb(47, 161, 255);" *ngIf="(parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) >= 90  ">A</span>
+                            <span style="color: rgb(68, 47, 255);" *ngIf="(parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) < 90 && (parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) >=80">B</span>
+                            <span style="color: rgb(161, 47, 255);" *ngIf="(parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) < 80 && (parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) >=70">C</span>
+                            <span style="color: rgb(255, 47, 238);" *ngIf="(parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) < 70 && (parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) >30">D</span>
+                            <span style="color: red;" *ngIf="(parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) <= 30 && (parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) >=0">F</span>
+                            </i>
+                        </b><br>
+                        <b>Result: 
+                            <i>
+                            <span style="color: rgb(47, 255, 147);" *ngIf="(parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) > 30">Pass</span>
+                            <span style="color: Red;" *ngIf="(parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) <= 30">Fail</span>
+                            </i>
+                            </b>
+                    </div>
+                
+                    <mat-card-content>
+                        <b>Quiz: </b><i>{{r.quiz.title}}</i><br>
+                        <b>Score: </b>
+                            <i>{{r.score}}</i>
+                        <br>
+                        <b>Total Marks: </b><i>{{r.quiz.numberOfQuestions}}</i><br>
+                        <b>Total Percentage: </b><i>{{ parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100 }}%</i><br>
+                        <br>
+                        
+                        
+                        
+                    </mat-card-content>
+                
+                    <mat-card-subtitle class="text-center">
+                        {{r.dateTime}}
+                    </mat-card-subtitle>
+                    
+                   
+                    
+                <br><br>
+                </mat-card>
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<br><br>
+
+<div style="width: 450px; padding: 2px 20px; margin: 10px 0px; height: 60px; border: 5px solid grey;border-radius: 50px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; background-color: white; color: blue;" class="ml20 text-center" width="40%" height="40px">
+    <pagination-controls  (pageChange)="p=$event"></pagination-controls>
+</div>
+
+
+
+<br><br>

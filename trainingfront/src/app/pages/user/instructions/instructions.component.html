@@ -1,0 +1,46 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>
+                            Instuctions of the Quiz
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            All the best
+                        </mat-card-subtitle>
+                    </mat-card-header>
+
+                    <mat-card-content>
+                        <h3>{{quiz.title}}</h3>
+                        <p>{{quiz.description}}</p>
+
+                        <mat-divider>
+
+                        </mat-divider>
+
+                        <h1>Important Instructions</h1>
+                        <ul>
+                            <li>The type of questions are multiple choice Questions</li>
+                            <li>There is only possible answer on every question</li>
+                            <li>Make sure to sit in a quiet environment to concentrate well</li>
+                            <li>Number of Questions <b>{{quiz.numberOfQuestions}}</b></li>
+                            <li>Time for the quiz <b>{{quiz.numberOfQuestions*2}} Minutes </b></li>
+                            <li>GOOD LUCK!!</li>
+                        </ul>
+                        <mat-divider>
+
+                        </mat-divider>
+                        
+
+                    </mat-card-content>
+                    <mat-card-actions class="text-center">
+                        <button (click)="startQuiz()" mat-raised-button color="primary">Start Quiz</button>
+                    </mat-card-actions>
+
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

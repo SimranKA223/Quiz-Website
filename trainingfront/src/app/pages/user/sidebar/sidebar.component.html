@@ -1,0 +1,28 @@
+<mat-card class="transparent">
+    <mat-action-list>
+
+        <div mat-subheader class="text-center">
+            Menu
+        </div>
+        <mat-divider></mat-divider>
+        <button mat-list-item routerLink='/user-dashboard/profile'>
+            <mat-icon mat-list-icon>account_circle</mat-icon>Profile
+        </button>
+
+        <button mat-list-item routerLink='/user-dashboard/userResult'>
+            <mat-icon mat-list-icon>storage</mat-icon>Result
+        </button>
+
+        <button mat-list-item  routerLink="/user-dashboard/0">
+            <mat-icon mat-list-icon>event_note</mat-icon>All quizzes
+        </button>
+
+        <button [routerLink]="'/user-dashboard/'+c.cid" mat-list-item *ngFor="let c of categories">
+            <mat-icon mat-list-icon>quiz</mat-icon>{{c.title}}
+        </button>
+        
+        
+       
+
+    </mat-action-list>
+</mat-card>

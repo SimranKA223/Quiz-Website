@@ -1,0 +1,55 @@
+<h1 style="color: white;">Quizzes</h1>
+
+
+
+<div >
+    <input type="text"
+    placeholder="Search by Category"
+    style="width: 450px; padding: 2px 20px; margin: 10px 0px; height: 60px; border: 5px solid grey;border-radius: 50px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"
+    [(ngModel)]="nameSearch"
+    >
+
+    
+
+</div>
+
+<br>
+
+<mat-card class="mb20 transparent" *ngFor="let q of quizzes | filter:nameSearch | paginate:{itemsPerPage:3, currentPage:p};" >
+    
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>
+            {{q.title}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{q.category.title}}
+        </mat-card-subtitle>
+
+
+    </mat-card-header>
+
+    <mat-card-content>
+        <b><i><p>
+            {{q.description}}
+        </p></i></b>
+        
+    </mat-card-content>
+    <button mat-stroked-button>Number of Questions {{q.numberOfQuestions}}</button>
+    <button mat-stroked-button>Max Marks: {{q.maxMarks}}</button>
+    
+    <button [routerLink]="'/admin/view-questions/'+q.qId+'/'+q.title" mat-flat-button color="accent">Questions</button>
+    <button [routerLink]="'/admin/quiz/'+q.qId" mat-flat-button color="primary">Update</button>
+    <button mat-flat-button color="warn" (click)="deleteQuiz(q.qId)">Delete</button>
+
+
+</mat-card>
+
+<div style="width: 450px; padding: 2px 20px; margin: 10px 0px; height: 60px; border: 5px solid grey;border-radius: 50px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; background-color: white; color: blue;" class="ml20 text-center" width="40%" height="40px">
+    <pagination-controls  (pageChange)="p=$event"></pagination-controls>
+</div>
+
+<div class="container text-center mt20">
+    <button  routerLink="/admin/add-quiz" mat-raised-button color="accent">Add New Quiz</button>
+    <br><br><br>
+</div>

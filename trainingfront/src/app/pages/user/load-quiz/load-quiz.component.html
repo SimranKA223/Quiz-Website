@@ -1,0 +1,51 @@
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+        <h1 style="color: white;">Your Quizzes</h1>
+        <div class="row mt20" *ngIf="quizzes">
+
+            <div class="col-md-4" *ngFor="let q of quizzes | paginate:{itemsPerPage:6, currentPage:p}; ">
+                
+                <mat-card class="mt20">
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>
+                            {{q.title}}
+                        </mat-card-title>
+
+                        <mat-card-subtitle>
+                            {{q.category.title}}
+                        </mat-card-subtitle>
+
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p class="truncate"><b><i>{{q.description}}</i></b></p>
+                    </mat-card-content>
+
+                    
+                    <button mat-button color="primary">Questions: {{q.numberOfQuestions}}</button>
+                    <button mat-button color="accent">M.M:{{q.maxMarks}}</button>
+                    <button mat-raised-button style="color: white; background-color: springgreen;" color="accent" [routerLink]="'/user-dashboard/instructions/'+q.qId">Start</button>
+
+                </mat-card>
+
+            </div>
+
+            <div class="col-md-12" *ngIf="quizzes.length==0">
+                <mat-card>
+                    <mat-card-content>
+                        <h1>No data in this category</h1>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<div style="width: 450px; padding: 2px 20px; margin: 10px 0px; height: 60px; border: 5px solid grey;border-radius: 50px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; background-color: white; color: blue;" class="ml20 text-center" width="40%" height="40px">
+    <pagination-controls  (pageChange)="p=$event"></pagination-controls>
+</div>
+
+<br><br>

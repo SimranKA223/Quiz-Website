@@ -1,0 +1,77 @@
+<h1 class="ml20" style="color: white;">Result Details</h1>
+
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row mt20">
+
+            <div class="container" *ngFor="let r of result ">
+
+                <mat-card class=" mt20 transparent" *ngIf="r.user.id==id" style="width: 75%;">
+            
+            
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>{{r.user.firstName}} {{r.user.lastName}}
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            {{r.user.username}}
+                        </mat-card-subtitle>
+                
+                
+                    </mat-card-header>
+
+                    <div class="text-center" style="font-size: large;">
+                        <b>Grade: 
+                            <i>
+                            <span style="color: rgb(47, 161, 255);" *ngIf="(parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) >= 90  ">A</span>
+                            <span style="color: rgb(68, 47, 255);" *ngIf="(parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) < 90 && (parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) >=80">B</span>
+                            <span style="color: rgb(161, 47, 255);" *ngIf="(parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) < 80 && (parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) >=70">C</span>
+                            <span style="color: rgb(255, 47, 238);" *ngIf="(parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) < 70 && (parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) >30">D</span>
+                            <span style="color: red;" *ngIf="(parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) <= 30 && (parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) >=0">F</span>
+                            </i>
+                        </b><br>
+                        <b>Result: 
+                            <i>
+                            <span style="color: rgb(47, 255, 147);" *ngIf="(parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) > 30">Pass</span>
+                            <span style="color: Red;" *ngIf="(parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100) <= 30">Fail</span>
+                            </i>
+                            </b>
+                    </div>
+                
+                    <mat-card-content>
+                        <b>Quiz: </b><i>{{r.quiz.title}}</i><br>
+                        <b>Score: </b>
+                            <i>{{r.score}}</i>
+                        <br>
+                        <b>Total: </b><i>{{r.quiz.numberOfQuestions}}</i><br>
+                        <b>Total Percentage: </b><i>{{ parseFloat(r.score) / parseFloat(r.quiz.numberOfQuestions) * 100 }}%</i><br>
+                        <br>   
+                        
+                    </mat-card-content>
+                
+                    
+            
+                    
+            
+                <mat-card-subtitle class="text-center">
+                        {{r.dateTime}}
+                    </mat-card-subtitle>    
+                   
+                    
+                <br>
+                </mat-card>
+            
+                
+            
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<br><br>

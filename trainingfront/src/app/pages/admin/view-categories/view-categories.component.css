@@ -1,0 +1,6 @@
+.transparent{
+    background-color: white;
+    border:2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(3px);
+    color: black;
+}

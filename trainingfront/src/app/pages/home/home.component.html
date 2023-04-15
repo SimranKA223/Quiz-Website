@@ -1,0 +1,75 @@
+<h2 style="color: aliceblue;" class="text-center mt20">Welcome To Quiz Website</h2>
+<div class="bootstrap-wrapper" *ngIf="!isLoggedIn">
+    <div class="container">
+        <div class="row" mt20>
+            <div class="col-md-6 offset-md-3">
+                <mat-card class="mt20 transparent" >
+
+                    <div class="flex-container">
+
+                        <div class="flex-child magenta text-center">
+                           <br><br>
+                          <img src="../../../assets/q.webp" alt="" width="80%" height="80%" style="border-radius: 100px;">
+                          <h3></h3>
+                        </div>
+                        
+                        <div class="flex-child green text-center">
+                            <h1 class="mt60" style="color: aliceblue;">Join Us</h1>
+                            <h3 style="color: aliceblue;">Already a user</h3>
+                            <button mat-raised-button type="submit" style="background-color: rgb(204, 255, 204);
+                            width: 70%; height: 50px;" routerLink='/login'>Login</button>
+                            <br><br>
+                            <h3 style="color: aliceblue;">Not a user</h3>
+                            <button mat-raised-button type="submit" class="mb40" style="background-color: rgb(204, 255, 204);
+                            width: 70%; height: 50px;" routerLink='/signup'>Sign Up</button>
+                            <br><br><br>
+                        </div>
+                        
+                      </div>
+             
+            </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bootstrap-wrapper" *ngIf="isLoggedIn">
+    <div class="container">
+        <div class="row" mt20>
+            <div class="col-md-6 offset-md-3">
+                <mat-card class="mt20 transparent" >
+
+                    <div class="flex-container">
+
+                        <div class="flex-child magenta text-center">
+                           <br><br>
+                          <img src="../../../assets/q.webp" alt="" width="80%" height="80%" style="border-radius: 100px;">
+                          <h3></h3>
+                        </div>
+                        
+                        <div class="flex-child green text-center mr20">
+                            <h1 class="mt60" style="color: aliceblue;">Hi!!</h1>
+                            <h3 style="color: aliceblue;">{{user.firstName}} {{user.lastName}}</h3>
+                            
+                            
+                            <h3 style="color: aliceblue;">This website enables the user to undertake a series of multiple choice questions on different technical topics. The app is user friendly. At the end of the quiz, a result-report is generated which states the score.</h3>
+                            
+
+                            <br>
+                        </div>
+                        
+                      </div>
+             
+            </mat-card><br>
+            <div class="text-center">
+                <button style="background-color: rgb(204, 255, 204);
+                width: 70%; height: 50px;" class="text-center" mat-flat-button [routerLink]="user.authorities[0].authority === 'ADMIN' ? '/admin/profile' : '/user-dashboard/profile'">Dashboard</button>
+            </div>
+            
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
